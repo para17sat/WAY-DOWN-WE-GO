@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header .back {
+            background-color: #ccc;
+            padding: 5px 10px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .header .back svg {
+            width: 20px;
+            height: 20px;
+            fill: #333;
+        }
+
+        .movie-info {
+            margin-bottom: 20px;
+        }
+
+        .movie-info h2 {
+            margin-top: 0;
+        }
+
+        .movie-info .location {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .seat-map {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-gap: 5px;
+        }
+
+        .seat {
+            width: 25px;
+            height: 25px;
+            border-radius: 5px;
+            background-color: #ccc;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .seat.available {
+            background-color: #337ab7;
+        }
+
+        .seat.booked {
+            background-color: #ddd;
+        }
+
+        .seat.selected {
+            background-color: #f05050;
+        }
+
+        .seat svg {
+            width: 15px;
+            height: 15px;
+            fill: #fff;
+        }
+
+        .seat-legend {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .seat-legend .legend-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .seat-legend .legend-item .seat {
+            margin-right: 5px;
+        }
+
+        .screen {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .summary {
+            background-color: #f05050;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .summary .summary-item {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+        }
+
+        .summary .summary-item span {
+            font-weight: bold;
+        }
+
+        .next {
+            background-color: #f05050;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+        }
+
+        .next svg {
+            width: 20px;
+            height: 20px;
+            fill: #fff;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="back">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.41 7.41l-5.83 5.84L10.59 12l5.83 5.83L18 12l-5.83-5.83z"/></svg>
+            </div>
+            <img src="https://cdn.culture.ru/images/c9a911bd-a5e8-5af5-8793-0c3bbc78dafa" alt="Movie Poster" style="width: 100%; height: auto;">
+        </div>
+        <div class="movie-info">
+            <h2>Guardians of the Galaxy Vol. 2</h2>
+            <p class="location"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10s-10-4.48-10-10s4.48-10 10-10zm0-2c-6.63 0-12 5.37-12 12s5.37 12 12 12s12-5.37 12-12s-5.37-12-12-12zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8z"/></svg> Cineplex Entertainment, Toronto ON</p>
+        </div>
+        <div class="seat-map">
+            <div class="seat-legend">
+                <div class="legend-item">
+                    <div class="seat available"></div>
+                    <span>Available</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat booked"></div>
+                    <span>Booked</span>
+                </div>
+                <div class="legend-item">
+                    <div class="seat selected"></div>
+                    <span>Selected</span>
+                </div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">G</span>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">F</span>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">E</span>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">D</span>
+                <div class="seat available"></div>
+                <div class="seat selected"></div>
+                <div class="seat selected"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">C</span>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">B</span>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+            <div class="seat-row">
+                <span class="row-label">A</span>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+                <div class="seat available"></div>
+            </div>
+        </div>
+        <div class="screen">Screen</div>
+        <div class="summary">
+            <div class="summary-item">
+                <span>Date:</span> <span>Jul 11, 19:15</span>
+            </div>
+            <div class="summary-item">
+                <span>Tickets:</span> <span>3</span>
+            </div>
+            <div class="summary-item">
+                <span>TOTAL:</span> <span>$31</span>
+            </div>
+            <button class="next">Next <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59 7.41l5.83 5.84L13.41 12l-5.83 5.83L6 12l5.83-5.83z"/></svg></button>
+        </div>
+    </div>
+</body>
+</html>
